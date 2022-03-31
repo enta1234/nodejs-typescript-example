@@ -37,16 +37,6 @@ jobs:
         # Learn more about CodeQL language support at https://git.io/codeql-language-support
 
     steps:
-    - name: push CodeQL
-      uses: snow-actions/line-notify@v1.0.0
-      with:
-        access_token: ${{ secrets.LINE_NOTIFY_TOKEN }}
-        message: |
-            Triggered ${{github.repository}}'s ${{ github.event_name }} event.
-            [BRANCH] => ${{ github.ref_name }}
-            [COMMIT] => ${{ github.event.head_commit.message }}
-            [ACTOR] => ${{ github.actor }}
-        
     - name: Checkout repository
       uses: actions/checkout@v2
 
@@ -83,6 +73,10 @@ jobs:
       uses: snow-actions/line-notify@v1.0.0
       with:
         access_token: ${{ secrets.LINE_NOTIFY_TOKEN }}
-        message: success
-        sticker_id: 1992
-        package_id: 446
+        message: |
+          Triggered ${{github.repository}}'s ${{ github.event_name }} event.
+          [BRANCH] => ${{ github.ref_name }}
+          [COMMIT] => ${{ github.event.head_commit.message }}
+          [ACTOR] => ${{ github.actor }}
+        sticker_id: 16581271
+        package_id: 8522
