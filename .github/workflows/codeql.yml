@@ -82,12 +82,11 @@ jobs:
         package_id: 8522
   run-if-failed:
     runs-on: ubuntu-latest
-    name: send line notify
     needs: analyze
     steps:
     - name: the job failure
       uses: louis70109/line-notify-action@master
-      if: ${{ always() && failure() }}
+      if: always() && (needs.job1.result == 'failure' || needs.job2.result == 'failure')
       with:
         token: ${{ secrets.LINE_NOTIFY_TOKEN }}
         message: |
