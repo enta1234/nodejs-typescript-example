@@ -43,7 +43,7 @@ jobs:
         access_token: ${{ secrets.LINE_NOTIFY_TOKEN }}
         message: |
             Triggered ${{github.repository}}'s ${{ github.event_name }} event.
-            [BRANCH] => ${{ github.ref }}
+            [BRANCH] => ${{ github.ref_name }}
             [COMMIT] => ${{ github.event.head_commit.message }}
             [ACTOR] => ${{ github.actor }}
         
@@ -83,5 +83,8 @@ jobs:
       uses: snow-actions/line-notify@v1.0.0
       with:
         access_token: ${{ secrets.LINE_NOTIFY_TOKEN }}
-        message: test workflow notify line eiei step finish
-
+        run: |
+         if [[ ${{ steps.generate_number.outputs.random_number }} == 0 ]];
+         message: success
+         if [[ ${{ steps.generate_number.outputs.random_number }} == 1 ]];
+         message: fail
