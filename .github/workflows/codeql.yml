@@ -83,8 +83,6 @@ jobs:
       uses: snow-actions/line-notify@v1.0.0
       with:
         access_token: ${{ secrets.LINE_NOTIFY_TOKEN }}
-        run: |
-         if [[ ${{ steps.generate_number.outputs.random_number }} == 0 ]];
-         message: success
-         if [[ ${{ steps.generate_number.outputs.random_number }} == 1 ]];
-         message: fail
+        message: success
+        sticker_id: 1
+        package_id: 1
