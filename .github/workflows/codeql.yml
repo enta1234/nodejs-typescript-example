@@ -77,5 +77,21 @@ jobs:
           Triggered ${{github.repository}}#${{ github.ref_name }}
           [COMMIT] => ${{ github.event.head_commit.message }}
           [ACTOR] => ${{ github.actor }}
+          [***SUCCESS***]
         sticker_id: 16581271
+        package_id: 8522
+  notify:
+    runs-on: ubuntu-latest
+    name: send line notify
+    steps:
+    - name: the job failure
+      if: ${{ failure() }}
+      with:
+        token: ${{ secrets.LINE_NOTIFY_TOKEN }}
+        message: |
+          Triggered ${{github.repository}}#${{ github.ref_name }}
+          [COMMIT] => ${{ github.event.head_commit.message }}
+          [ACTOR] => ${{ github.actor }}
+          [***FAILED***]
+        sticker_id: 16581283
         package_id: 8522
