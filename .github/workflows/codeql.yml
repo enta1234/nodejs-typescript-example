@@ -80,14 +80,14 @@ jobs:
           [***SUCCESS***]
         sticker_id: 16581271
         package_id: 8522
-  notify:
+  run-if-failed:
     runs-on: ubuntu-latest
     name: send line notify
     needs: analyze
     steps:
     - name: the job failure
       uses: louis70109/line-notify-action@master
-      if: ${{ failure() }}
+      if: ${{ always() && failure() }}
       with:
         token: ${{ secrets.LINE_NOTIFY_TOKEN }}
         message: |
