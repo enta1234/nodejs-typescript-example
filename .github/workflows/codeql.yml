@@ -43,9 +43,9 @@ jobs:
         access_token: ${{ secrets.LINE_NOTIFY_TOKEN }}
         message: |
             Triggered ${{github.repository}}'s ${{ github.event_name }} event.
-            show the github varable ref: ${{ github.ref }}
-            show the github varable commit: ${{ github.sha }}
-            Commit: ${{ github.event.head_commit.message }}
+            [BRANCH] => ${{ github.ref }}
+            [COMMIT] => ${{ github.event.head_commit.message }}
+            [ACTOR] => ${{ github.actor }}
         
     - name: Checkout repository
       uses: actions/checkout@v2
