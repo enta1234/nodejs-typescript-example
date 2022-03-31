@@ -69,13 +69,12 @@ jobs:
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
       
-    - name: finish CodeQL
-      uses: snow-actions/line-notify@v1.0.0
+    - name: send noti
+      uses: louis70109/line-notify-action@master
       with:
         access_token: ${{ secrets.LINE_NOTIFY_TOKEN }}
         message: |
-          Triggered ${{github.repository}}'s ${{ github.event_name }} event.
-          [BRANCH] => ${{ github.ref_name }}
+          Triggered ${{github.repository}}#${{ github.ref_name }}
           [COMMIT] => ${{ github.event.head_commit.message }}
           [ACTOR] => ${{ github.actor }}
         sticker_id: 16581271
