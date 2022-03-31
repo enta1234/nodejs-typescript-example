@@ -37,6 +37,12 @@ jobs:
         # Learn more about CodeQL language support at https://git.io/codeql-language-support
 
     steps:
+    - name: push CodeQL
+      uses: snow-actions/line-notify@v1.0.0
+      with:
+        access_token: DxSfvAjUpSrF3tCNLJcSed8nW2vlNUNwOcFhd9Iot7m
+        message: test workflow notify line eiei step push
+        
     - name: Checkout repository
       uses: actions/checkout@v2
 
@@ -72,6 +78,6 @@ jobs:
     - name: finish CodeQL
       uses: snow-actions/line-notify@v1.0.0
       with:
-        access_token: ${{ secrets.LINE_ACCESS_TOKEN }}
-        message: some message
+        access_token: DxSfvAjUpSrF3tCNLJcSed8nW2vlNUNwOcFhd9Iot7m
+        message: test workflow notify line eiei step finish
 
