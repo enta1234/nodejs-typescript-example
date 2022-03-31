@@ -69,10 +69,10 @@ jobs:
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
       
-    - name: send noti
+    - name: send notify
       uses: louis70109/line-notify-action@master
       with:
-        access_token: ${{ secrets.LINE_NOTIFY_TOKEN }}
+        token: ${{ secrets.LINE_NOTIFY_TOKEN }}
         message: |
           Triggered ${{github.repository}}#${{ github.ref_name }}
           [COMMIT] => ${{ github.event.head_commit.message }}
