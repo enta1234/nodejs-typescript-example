@@ -75,7 +75,7 @@ jobs:
         token: ${{ secrets.LINE_NOTIFY_TOKEN }}
         message: |
           Triggered ${{github.repository}}#${{ github.ref_name }}
-          [COMMIT] => ${{ github.event.commits.*.message  }}
+          [COMMIT] => ${{ github.event.commits.[*].message  }}
           [ACTOR] => ${{ github.actor }}
           [***SUCCESS***]
         sticker_id: 16581271
