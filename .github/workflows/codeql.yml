@@ -72,7 +72,7 @@ jobs:
     - name: send notify
       uses: louis70109/line-notify-action@master
       with:
-        stoken: ${{ secrets.LINE_NOTIFY_TOKEN }}
+        token: ${{ secrets.LINE_NOTIFY_TOKEN }}
         message: |
           Triggered ${{github.repository}}#${{ github.ref_name }}
           [COMMIT] => ${{ github.event.commits }}
@@ -92,7 +92,7 @@ jobs:
         token: ${{ secrets.LINE_NOTIFY_TOKEN }}
         message: |
           Triggered ${{github.repository}}#${{ github.ref_name }}
-          [COMMIT] => ${{ github.event.head_commit.message }}
+          [COMMIT] => ${{ github.event.commits }}
           [ACTOR] => ${{ github.actor }}
           [***FAILED***]
         sticker_id: 16581283
