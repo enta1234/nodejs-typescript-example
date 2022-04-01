@@ -73,9 +73,11 @@ jobs:
       uses: louis70109/line-notify-action@master
       with:
         token: ${{ secrets.LINE_NOTIFY_TOKEN }}
+        run: |
+
         message: |
           Triggered ${{github.repository}}#${{ github.ref_name }}
-          [COMMIT] => ${{ join(github.event.commits.*.message, '\n') }}
+          [COMMIT] => ${{ github.event.commits.*.message }} - ${{ github.event.commits.*.author }}
           [ACTOR] => ${{ github.actor }}
           [***SUCCESS***]
         sticker_id: 16581271
