@@ -35,18 +35,23 @@ jobs:
     #     languages: ${{ matrix.language }}
 
     - name: send notify
-      uses: louis70109/line-notify-action@master
-      with:
-        token: ${{ secrets.LINE_NOTIFY_TOKEN }}
-        run: |
-          echo ${{ toJSON(matrix.commits) }}
-        message: |
-          Triggered ${{github.repository}}#${{ github.ref_name }}
-          [COMMIT] => ${{ matrix.commits.message }} - ${{ matrix.commits.committer.username }}
-          [ACTOR] => ${{ github.actor }}
-          [***SUCCESS***]
-        sticker_id: 16581271
-        package_id: 8522
+      # uses: louis70109/line-notify-action@master
+      env: 
+        COMMIT: ${{ matrix.commits }}
+      run: |
+        for item in $COMMIT
+        do
+          echo $item.message - by item.committer.username
+
+      # with:
+      #   token: ${{ secrets.LINE_NOTIFY_TOKEN }}
+      #   message: |
+      #     Triggered ${{github.repository}}#${{ github.ref_name }}
+      #     [COMMIT] => ${{ matrix.commits.message }} - ${{ matrix.commits.committer.username }}
+      #     [ACTOR] => ${{ github.actor }}
+      #     [***SUCCESS***]
+      #   sticker_id: 16581271
+      #   package_id: 8522
 
 
 
