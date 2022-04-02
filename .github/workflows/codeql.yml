@@ -64,7 +64,7 @@ jobs:
         run: |
           for item in ${{github.event.commits}}
           do 
-            echo $item.message - by $item.committer.username
+            echo "${item.message} - by ${item.committer.username}"
           done
 
           echo '::set-output name=commit::$commit_msg'
