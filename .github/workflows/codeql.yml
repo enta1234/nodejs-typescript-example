@@ -42,7 +42,7 @@ jobs:
           echo ${{ toJSON(matrix.commits) }}
         message: |
           Triggered ${{github.repository}}#${{ github.ref_name }}
-          [COMMIT] => ${{ matrix.commits.message }} - ${{ matrix.commits.author }}
+          [COMMIT] => ${{ matrix.commits.message }} - ${{ matrix.commits.author.committer }}
           [ACTOR] => ${{ github.actor }}
           [***SUCCESS***]
         sticker_id: 16581271
