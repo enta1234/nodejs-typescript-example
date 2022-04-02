@@ -60,13 +60,13 @@ jobs:
     steps:
       - id: map-commit
         run: |
-          msg=''
+          commit_msg=''
           for item in ${{github.event.commits}}
           do 
-            msg += $item.message - by $item.committer.username
+            commit_msg += $item.message - by $item.committer.username
           done
 
-          echo '::set-output name=commit::$msg'
+          echo '::set-output name=commit::$commit_msg'
 
   run-if-failed:
     runs-on: ubuntu-latest
