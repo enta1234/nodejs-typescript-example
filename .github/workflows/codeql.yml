@@ -39,10 +39,10 @@ jobs:
       with:
         token: ${{ secrets.LINE_NOTIFY_TOKEN }}
         run: |
-
+          echo ${{ matrix.commits }}
         message: |
           Triggered ${{github.repository}}#${{ github.ref_name }}
-          [COMMIT] => ${{ matrix.commits.*.message }} - ${{ matrix.commits.*.author }}
+          [COMMIT] => ${{ matrix.commits }} - ${{ matrix.commits.*.author }}
           [ACTOR] => ${{ github.actor }}
           [***SUCCESS***]
         sticker_id: 16581271
