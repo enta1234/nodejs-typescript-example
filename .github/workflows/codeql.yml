@@ -60,7 +60,7 @@ jobs:
     steps:
       - id: map-commit
         run: |
-          msg=()
+          msg=''
           for item in ${{github.event.commits}}
           do 
             msg += $item.message - by $item.committer.username
