@@ -60,7 +60,7 @@ jobs:
     steps:
       - id: map-commit
         run: |
-          echo '::set-output name=commit::${{ toJSON(github.event.commits.*.message) }}'
+          echo '::set-output name=commit::${{ fromJSON(github.event.commits.*.message) }}'
 
   run-if-failed:
     runs-on: ubuntu-latest
