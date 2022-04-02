@@ -57,13 +57,14 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       commit: ${{ steps.outputs.map-commit.commit}}
+    env:
+      commit_msg: ''
     steps:
       - id: map-commit
         run: |
-          commit_msg=''
           for item in ${{github.event.commits}}
           do 
-            commit_msg += $item.message - by $item.committer.username
+            $commit_msg += $item.message - by $item.committer.username
           done
 
           echo '::set-output name=commit::$commit_msg'
