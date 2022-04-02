@@ -56,11 +56,11 @@ jobs:
   get-push-commit:
     runs-on: ubuntu-latest
     outputs:
-      commit: ${{ step.map-commit.commit}}
+      commit: ${{ steps.map-commit.commit}}
     steps:
       - id: map-commit
         run: |
-          echo ::set-output name=commit::${{ github.event.commits.*.message }}
+          echo ::set-output name=commit::${{ toJSON(github.event.commits.*.message) }}
 
   run-if-failed:
     runs-on: ubuntu-latest
