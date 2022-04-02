@@ -37,7 +37,7 @@ jobs:
     - name: send notify
       # uses: louis70109/line-notify-action@master
       env: 
-        COMMIT: ${{ matrix.commits }}
+        COMMIT: ${{ github.event.commits }}
       run: |
         for item in $COMMIT
         do
