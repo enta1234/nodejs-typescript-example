@@ -56,7 +56,7 @@ jobs:
   get-push-commit:
     runs-on: ubuntu-latest
     outputs:
-      commit: ${{ steps.map-commit.commit}}
+      commit: ${{ steps.outputs.map-commit.commit}}
     steps:
       - id: map-commit
         run: |
