@@ -61,6 +61,7 @@ jobs:
       commit_msg: ''
     steps:
       - id: map-commit
+        uses: actions/checkout@v2
         run: |
           for item in ${{github.event.commits}}
           do 
