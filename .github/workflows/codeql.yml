@@ -69,6 +69,8 @@ jobs:
 
           echo '::set-output name=commit::$commit_msg'
 
+          git log origin/master..origin
+
   run-if-failed:
     runs-on: ubuntu-latest
     needs: [analyze, get-push-commit]
